@@ -1,0 +1,17 @@
+{
+  "name": "株価サイト表示",
+  "description": "ブラウザ内で文字選択した銘柄コードで株価サイトを表示します。",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab","scripting","contextMenus"],
+  "background": {
+    "service_worker": "/src/background.js"
+  },
+  "icons": {
+    "16": "/images/candle016.png",
+    "32": "/images/candle032.png",
+    "48": "/images/candle048.png",
+    "128": "/images/candle128.png"
+  }
+}
+
