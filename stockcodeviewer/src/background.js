@@ -43,15 +43,19 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 function kabutanChart() {
-	let text = document.getSelection();
-	let url = "https://kabutan.jp/stock/chart?code=" + text;
+	let baseurl = "https://kabutan.jp/stock/chart?code=";
+	let text = String(document.getSelection());
+	text = text.trim();
+	let url = baseurl + text;
 	url = encodeURI(url);
 	window.open(url, '_blank');
 }
 
 function yjfChart() {
-	let text = document.getSelection();
-	let url = "https://finance.yahoo.co.jp/search/?query=" + text
+	let baseurl = "https://finance.yahoo.co.jp/search/?query=";
+	let text = String(document.getSelection());
+	text = text.trim();
+	let url = baseurl + text;
 	url = encodeURI(url);
 	window.open(url, '_blank');
 }
