@@ -26,33 +26,23 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
+	let baseurl = '';
 	switch (info.menuItemId) {
 		case "kabutanChart":
-			chrome.scripting.executeScript({
-				target: { tabId: tab.id },
-				function: kabutanChart,
-			});
+			baseurl = 'https://kabutan.jp/stock/chart?code=';
 			break;
 		case "yjfChart":
-			chrome.scripting.executeScript({
-				target: { tabId: tab.id },
-				function: yjfChart,
-			});
+			baseurl = 'https://finance.yahoo.co.jp/search/?query=';
 			break;
 	}
+	chrome.scripting.executeScript({
+		target: { tabId: tab.id },
+		function: gotoStockChart,
+		args: [baseurl],
+	});
 });
 
-function kabutanChart() {
-	let baseurl = "https://kabutan.jp/stock/chart?code=";
-	let text = String(document.getSelection());
-	text = text.trim();
-	let url = baseurl + text;
-	url = encodeURI(url);
-	window.open(url, '_blank');
-}
-
-function yjfChart() {
-	let baseurl = "https://finance.yahoo.co.jp/search/?query=";
+function gotoStockChart(baseurl) {
 	let text = String(document.getSelection());
 	text = text.trim();
 	let url = baseurl + text;
