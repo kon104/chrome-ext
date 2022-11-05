@@ -7,7 +7,7 @@
 chrome.runtime.onInstalled.addListener(function (details) {
 	const parent = chrome.contextMenus.create({
 		id: "finance",
-		title: "株価サイトを表示",
+		title: "銘柄コードで株価サイトを表示",
 		contexts: ["selection"],
 	});
 	chrome.contextMenus.create({
