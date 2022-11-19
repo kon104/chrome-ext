@@ -6,10 +6,11 @@
 
 chrome.runtime.onInstalled.addListener(function (details) {
 	const parent = chrome.contextMenus.create({
-		id: "finance",
-		title: "銘柄コードで株価サイトを表示",
+		id: "gmap",
+		title: "Google マップ",
 		contexts: ["selection"],
 	});
+/*
 	chrome.contextMenus.create({
 		parentId: parent,
 		id: "kabutanChart",
@@ -22,12 +23,16 @@ chrome.runtime.onInstalled.addListener(function (details) {
 		title: "Yahoo! ファイナンス",
 		contexts: ["all"],
 	});
+*/
 });
 
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
 	let baseurl = '';
 	switch (info.menuItemId) {
+		case "gmap":
+			baseurl = 'https://www.google.com/maps/search/?api=1&query=';
+			break;
 		case "kabutanChart":
 			baseurl = 'https://kabutan.jp/stock/chart?code=';
 			break;
