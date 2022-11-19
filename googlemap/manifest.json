@@ -1,0 +1,17 @@
+{
+  "name": "Google マップ へ送る",
+  "description": "ブラウザ内で文字選択した名称や住所で Google マップ を表示します。",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab","scripting","contextMenus"],
+  "background": {
+    "service_worker": "/src/background.js"
+  },
+  "icons": {
+    "16": "/images/gmap016.png",
+    "32": "/images/gmap032.png",
+    "48": "/images/gmap048.png",
+    "128": "/images/gmap128.png"
+  }
+}
+
