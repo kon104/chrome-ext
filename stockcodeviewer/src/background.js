@@ -45,6 +45,12 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 function gotoUrlWithDraggedText(baseurl) {
 	let text = String(document.getSelection());
 	text = text.trim();
+	text = text.replace(/[！-～]/g,
+		function(text){
+			return String.fromCharCode(text.charCodeAt(0) - 0xFEE0);
+		}
+	);
+	console.log("document.getSelection() = [" + text + "]");
 	let url = baseurl + text;
 	url = encodeURI(url);
 	window.open(url, '_blank');
